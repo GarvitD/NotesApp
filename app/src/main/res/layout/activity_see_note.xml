@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.seeNote">
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Dr. Garvit Dua"
+                android:textColor="@color/prime"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.026"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintVertical_bias="0.006"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"/>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:text="Facilisis posuere vestibulum taciti semper nisl, libero senectus dictum dolor enim sociis leo duis hendrerit lacinia aenean hymenaeos hendrerit mauris ridiculus congue. Dignissim aliquet aliquet fermentum nunc at blandit venenatis nascetur facilisis urna vivamus tincidunt a malesuada sed netus sagittis porta eu litora sapien aptent hymenaeos euismod morbi volutpat tristique lacinia nisi volutpat pulvinar metus aliquet sed ac enim platea dui dictumst condimentum mi nec ac phasellus natoque. Molestie volutpat vestibulum mus habitant Tristique ridiculus erat hymenaeos malesuada lacus cum, odio tempor sodales habitant facilisi purus interdum mauris ut tempus luctus ultricies nisl. Condimentum erat euismod vivamus rutrum curae; est Ipsum volutpat gravida curabitur. Varius facilisis mattis mus diam pretium duis facilisis netus suscipit accumsan molestie massa consectetuer nam elit aptent fusce luctus inceptos ac blandit curae; mi eu Nunc et cum laoreet, egestas consectetuer mus vivamus bibendum vitae felis suspendisse at arcu tempus non non scelerisque netus facilisi cubilia tincidunt ante aliquam fringilla posuere condimentum. Torquent pellentesque nunc penatibus torquent Cum mi tristique hymenaeos sollicitudin pellentesque blandit hendrerit felis lorem libero litora dictumst aliquet hymenaeos. Mus pellentesque posuere sem pharetra leo eleifend. Dapibus, pretium arcu commodo fames. Natoque duis mattis condimentum commodo pede sit platea luctus. Blandit vehicula. Urna lorem semper, risus eget odio tristique Nascetur mus, phasellus. Nunc primis venenatis volutpat interdum magna eget. Facilisis elit ante ullamcorper risus nostra. Lectus. Adipiscing auctor. Vulputate egestas arcu.
+
+Nulla mollis interdum, quis lacus eros ullamcorper Penatibus lectus elit iaculis ridiculus non auctor conubia vivamus Fusce scelerisque purus. Volutpat dictumst Molestie semper posuere sodales. Ante. Lobortis odio egestas lorem massa pellentesque amet erat, mollis dolor semper tempus leo quis nostra mi rhoncus dictumst hendrerit natoque rutrum dui dictumst cras sollicitudin, fringilla inceptos malesuada purus hac sit sem rhoncus ante mollis nam. Est aptent cubilia ultrices eleifend. Cum. Fusce platea cum, id luctus nullam nisi hymenaeos faucibus phasellus eros adipiscing porttitor. Cubilia. Porta tortor lorem iaculis hendrerit phasellus, quis tempor semper nibh dis id, congue cum etiam orci netus justo et. Phasellus hendrerit, in sociosqu duis molestie habitant. Id augue dolor molestie nec cras ante quis, mollis phasellus magna nam ultrices ac curae; dolor risus risus ut est. Dis lacus maecenas nunc consequat imperdiet fames justo vulputate magna, gravida. Congue porttitor dolor dapibus malesuada habitasse phasellus sed aenean etiam lorem pharetra, erat luctus dictumst tempor A fermentum magna dui ligula hymenaeos adipiscing taciti Lacus est dui vivamus fusce gravida consectetuer massa orci vitae elementum nunc parturient elementum cum blandit rhoncus curabitur dignissim augue tempus. Aenean fermentum tempor sodales pede lacus etiam taciti sit sem. Faucibus imperdiet ac lorem quisque. Bibendum pede curae;, fringilla scelerisque commodo arcu primis parturient dis id posuere eleifend, ullamcorper. Natoque. Tristique fringilla tempor phasellus dis. Vitae eget rutrum natoque porta aliquet nulla. Risus donec facilisi vitae suscipit. Placerat integer cras nullam venenatis at. A felis imperdiet. Nam lacus donec nec. Mi congue curae; amet tempus suspendisse tellus porta proin vivamus rutrum rhoncus ridiculus velit integer nonummy bibendum netus. Dictum Class amet tempor dapibus. Fames magna natoque rutrum tellus egestas habitasse. Est luctus sit imperdiet eu, tincidunt erat ipsum cum accumsan. Velit taciti curae; tristique eleifend varius. Dignissim fringilla facilisis mus consectetuer magnis. Laoreet Molestie blandit molestie dictumst neque duis eleifend laoreet class tempor. Imperdiet Dignissim auctor orci lacinia tempor, vel. Tortor quis morbi non pretium ac nisi lacinia fusce molestie lobortis venenatis. Porttitor. Luctus convallis suspendisse nostra auctor penatibus cras euismod elementum. Volutpat. Amet diam morbi faucibus magnis nostra nam consequat aliquam adipiscing varius rutrum nostra aliquet hymenaeos semper pulvinar tortor Per. Pulvinar vivamus ultricies quis suspendisse blandit convallis mauris aliquet vehicula aptent hac iaculis nonummy porta euismod nibh cubilia rhoncus et vitae quis venenatis amet amet ultricies vel dui aliquam vehicula, gravida consequat mus lobortis tortor pede ac habitasse. Nullam vitae eu praesent. Nullam risus enim feugiat ipsum, rhoncus. Cras metus. Per erat. Pulvinar cursus nostra quisque porttitor quisque eros auctor consequat netus etiam vel magnis risus magna scelerisque sollicitudin duis sociosqu sodales mauris imperdiet. Facilisis eu taciti. Dignissim congue quisque risus fermentum praesent interdum mattis. Curae; Pretium, rhoncus tempor velit, nullam. Blandit tempus primis suscipit quisque neque ac praesent natoque imperdiet tristique magnis, ultricies fames odio quam nascetur nisi nibh mus pellentesque nonummy dolor faucibus augue primis habitant parturient. Maecenas ipsum potenti, est at ante justo tempor rutrum lectus rutrum ultrices, eleifend cubilia. Dui platea. Nisi nam, sagittis sollicitudin tortor quam accumsan tempor dictum potenti cubilia phasellus venenatis blandit elementum pede ante nonummy lorem varius taciti placerat erat proin senectus libero tempus tortor taciti fermentum malesuada primis, tristique interdum.
+
+Tincidunt. Adipiscing id dis massa at curabitur auctor vulputate. Massa ullamcorper. Augue vitae cum adipiscing viverra. Morbi hymenaeos sed quis luctus. Donec dis nonummy feugiat etiam malesuada fusce potenti volutpat tincidunt curae; placerat mollis eu in. Iaculis pharetra velit nisl taciti lorem nam sodales eget pulvinar amet tristique, rhoncus lacinia ultricies etiam duis morbi integer tempor suscipit. Amet lectus sed torquent per velit eleifend enim conubia varius elit. Ligula orci nibh lectus eleifend nostra lectus curabitur ipsum litora auctor integer risus eleifend curabitur, pharetra elit metus, enim vehicula senectus euismod ipsum aenean Vulputate nulla viverra ornare vehicula eros nisi morbi Dui. Iaculis maecenas eros dapibus mauris integer sodales pharetra euismod. Tristique nonummy viverra dignissim convallis cras. Ultricies ornare, odio semper cum mollis pretium platea eros magna praesent penatibus vitae placerat euismod. Montes, nisi inceptos egestas dignissim lobortis dictumst. Integer vehicula in cubilia primis commodo feugiat sapien ornare rhoncus ad ligula facilisis dolor porttitor a auctor parturient metus at donec libero erat vestibulum eros luctus ultricies justo, condimentum ut curae; sem blandit nec consectetuer facilisi ultricies ad ac euismod erat, felis natoque ad eget elit sodales vel sed. Cubilia, elit porttitor nibh ut montes dictumst magnis enim curabitur dolor. Vulputate nisl metus eleifend. Erat. Tincidunt rhoncus conubia congue praesent nunc donec cras curae; nisl sociis sociis nostra venenatis tristique ac etiam id pretium potenti bibendum laoreet nisl eleifend netus magna. Tempor aliquam, dolor augue pede consectetuer fusce nullam accumsan velit sed bibendum leo condimentum dolor tempus euismod Nisl."
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/images"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
