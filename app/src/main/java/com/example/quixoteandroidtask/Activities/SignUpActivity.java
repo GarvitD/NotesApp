@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.example.quixoteandroidtask.Databases.UsersDatabaseHelper;
 import com.example.quixoteandroidtask.R;
 import com.example.quixoteandroidtask.databinding.ActivitySignUpBinding;
+import com.scottyab.aescrypt.AESCrypt;
 
+import java.security.GeneralSecurityException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     private static final int MIN_UPPER = 2;
     private static final int MIN_DIGIT = 2;
     private static final int MIN_SPECIAL_CHAR = 1;
+    private static final String PASS = "password";
 
     private ActivitySignUpBinding binding;
     private UsersDatabaseHelper usersDatabase;
@@ -43,20 +46,35 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(checks()) {
-                    String name = binding.name.getText().toString();
-                    String email = binding.emailId.getText().toString();
-                    String phone = binding.phoneNum.getText().toString();
-                    String password = binding.password.getText().toString();
+                    String name = binding.name.getText().toString().trim();
+                    String email = binding.emailId.getText().toString().trim();
+                    String phone = binding.phoneNum.getText().toString().trim();
+                    String password = binding.password.getText().toString().trim();
                     if(usersDatabase.isNewUser(email) && usersDatabase.isNewUser(phone)) {
-                        usersDatabase.addUser(email,password,name,phone);
 
-                        SharedPreferences sharedPreferences = getSharedPreferences("usersSp",MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("data",email);
-                        editor.putBoolean("isLoggedIn",true);
-                        editor.apply();
+                        try {
+                            String encypted = AESCrypt.encrypt(PASS,password);
+                            if(usersDatabase.addUser(email,encypted,name,phone)) {
+                                Log.i("addToSQL","done");
+                            } else {
+                                Log.i("addToSQL","fail");
+                            }
+                            if(usersDatabase.addNotetoDb(email,"")) {
+                                Log.i("addToSQL","done");
+                            } else {
+                                Log.i("addToSQL","fail");
+                            }
+                            SharedPreferences sharedPreferences = getSharedPreferences("usersSp",MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("data",email);
+                            editor.putBoolean("isLoggedIn",true);
+                            editor.apply();
 
-                        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+                            startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+                            finish();
+                        } catch (GeneralSecurityException e) {
+                            StyleableToast.makeText(SignUpActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG, R.style.errorToast).show();
+                        }
                     } else {
                         StyleableToast.makeText(SignUpActivity.this, "User already Exists! Login", Toast.LENGTH_LONG, R.style.errorToast).show();
                     }
@@ -81,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
         boolean check1 = name.length() >= MIN_NAME;
         boolean check2 = !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
 
-        long specialChars = name.length() - password.chars().filter(Character::isLetter).count() - password.chars().filter(Character::isDigit).count() - password.chars().filter(Character::isWhitespace).count();
+        int specialChars = (int) (password.length() - password.chars().filter(Character::isLetter).count() - password.chars().filter(Character::isDigit).count() - password.chars().filter(Character::isWhitespace).count());
         boolean check3 = password.length() >= MIN_PASSWORD
                 && !password.contains(name)
                 && password.chars().filter(Character::isUpperCase).count() >= MIN_UPPER

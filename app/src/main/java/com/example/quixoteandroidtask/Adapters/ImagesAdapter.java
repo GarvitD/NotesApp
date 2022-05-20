@@ -16,11 +16,13 @@ import java.util.List;
 
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesViewHolder> {
     Context context;
-    List<Uri> imageList;
+    List<String> imageList;
+    ImageOnClick imageOnClick;
 
-    public ImagesAdapter(Context context, List<Uri> imageList) {
+    public ImagesAdapter(Context context, List<String> imageList, ImageOnClick imageOnClick) {
         this.context = context;
         this.imageList = imageList;
+        this.imageOnClick = imageOnClick;
     }
 
     @NonNull
@@ -31,7 +33,13 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesView
 
     @Override
     public void onBindViewHolder(@NonNull ImagesViewHolder holder, int position) {
-        holder.photo.setImageURI(imageList.get(holder.getAdapterPosition()));
+        holder.photo.setImageURI(Uri.parse(imageList.get(holder.getAdapterPosition())));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageOnClick.openPopup(imageList.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -46,5 +54,9 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesView
 
             photo = itemView.findViewById(R.id.photo);
         }
+    }
+
+    public interface ImageOnClick {
+        void openPopup(String path);
     }
 }

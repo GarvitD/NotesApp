@@ -1,6 +1,7 @@
 package com.example.quixoteandroidtask.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quixoteandroidtask.Models.NotesModel;
@@ -19,6 +22,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     Context context;
     List<NotesModel> notesModelList;
     OnItemClick onItemClick;
+
+    private final int[] colors = {R.color.pink,R.color.light_red,R.color.light_green,R.color.light_yellow,R.color.cyan};
 
     public NotesAdapter(Context context, List<NotesModel> notesModelList, OnItemClick onItemClick) {
         this.context = context;
@@ -35,12 +40,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
         holder.title.setText(notesModelList.get(holder.getAdapterPosition()).getTitle());
-        holder.title.setText(notesModelList.get(holder.getAdapterPosition()).getDescription());
-        holder.photo.setImageURI(notesModelList.get(holder.getAdapterPosition()).getPhoto().get(0));
+        holder.photo.setImageURI(Uri.parse(notesModelList.get(holder.getAdapterPosition()).getPhoto().get(0)));
+        holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context,colors[(holder.getAdapterPosition())%5]));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClick.ItemClicked(notesModelList.get(holder.getAdapterPosition()), holder.getAdapterPosition());
+                onItemClick.ItemClicked(notesModelList.get(holder.getAdapterPosition()), colors[(holder.getAdapterPosition())%5]);
             }
         });
     }
@@ -51,18 +56,19 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     }
 
     public class NotesViewHolder extends RecyclerView.ViewHolder {
-        TextView title,description;
+        TextView title;
         ImageView photo;
+        CardView cardView;
         public NotesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.note_item_title);
-            description = itemView.findViewById(R.id.notes_item_descp);
             photo = itemView.findViewById(R.id.notes_image);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 
     public interface OnItemClick {
-        void ItemClicked(NotesModel model,int position);
+        void ItemClicked(NotesModel model,int color);
     }
 }

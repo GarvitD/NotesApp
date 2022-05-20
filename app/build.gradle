@@ -47,5 +47,9 @@ dependencies {
 
     implementation 'io.github.muddz:styleabletoast:2.4.0'
     implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.airbnb.android:lottie:5.0.3'
+    implementation 'com.scottyab:aescrypt:0.0.1'
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
+
 
 }

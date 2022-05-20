@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.AddNote">
+    tools:context=".Activities.AddNote"
+    android:background="@color/dark_blue">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
-                style="@style/LoginTextInputLayoutStyle"
+                style="@style/AddItemTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -33,16 +34,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.049"
                 app:startIconDrawable="@drawable/ic_baseline_title_24"
-                app:startIconTint="@color/dark_blue"
+                app:startIconTint="@color/white"
                 app:counterEnabled="true"
-                app:counterMaxLength="100">
+                app:counterMaxLength="100"
+                app:counterTextColor="@color/white"
+                app:hintTextAppearance="@style/myAppearance"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/noteTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/dark_blue"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:maxLength="100"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -77,13 +81,14 @@
                     android:text="Add Image of \n your report"
                     android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
-                style="@style/LoginTextInputLayoutStyle"
+                style="@style/AddItemTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -97,16 +102,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/addImage"
                 app:layout_constraintVertical_bias="0.0"
                 app:startIconDrawable="@drawable/ic_baseline_description_24"
-                app:startIconTint="@color/dark_blue"
+                app:startIconTint="@color/white"
                 app:counterEnabled="true"
-                app:counterMaxLength="1000">
+                app:counterMaxLength="1000"
+                app:counterTextColor="@color/white"
+                app:hintTextAppearance="@style/myAppearance"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/noteDescp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/dark_blue"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:maxLength="1000"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +129,7 @@
                 android:background="@drawable/gradient_round_bg"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="Book Appointment!"
+                android:text="Add Note!"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="25sp"

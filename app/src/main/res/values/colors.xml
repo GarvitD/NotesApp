@@ -11,4 +11,9 @@
     <color name="dark_blue">#336cef</color>
     <color name="red">#D03C42</color>
     <color name="green">#4BB543</color>
+    <color name="pink">#fe99ff</color>
+    <color name="light_red">#fe9e9f</color>
+    <color name="light_green">#88e385</color>
+    <color name="light_yellow">#F6BE00</color>
+    <color name="cyan">#9ffffe</color>
 </resources>

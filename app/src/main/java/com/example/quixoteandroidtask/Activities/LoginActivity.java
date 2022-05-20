@@ -12,6 +12,9 @@ import android.widget.Toast;
 import com.example.quixoteandroidtask.Databases.UsersDatabaseHelper;
 import com.example.quixoteandroidtask.R;
 import com.example.quixoteandroidtask.databinding.ActivityLoginBinding;
+import com.scottyab.aescrypt.AESCrypt;
+
+import java.security.GeneralSecurityException;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -19,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private UsersDatabaseHelper usersDatabase;
+
+    private static final String PASS = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +44,17 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         if(password.length() > 0) {
                             if(usersDatabase.isPassCorrect(email,password)) {
-
+                                if(email.chars().filter(Character::isDigit).count() == email.length()) {
+                                    email = usersDatabase.getEmail(email);
+                                }
                                 SharedPreferences sharedPreferences = getSharedPreferences("usersSp",MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putInt("id",usersDatabase.getRowNum(email));
                                 editor.putBoolean("isLoggedIn",true);
+                                editor.putString("data",email);
                                 editor.apply();
 
                                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                finish();
                             } else {
                                 binding.password.requestFocus();
                                 binding.password.setError("Password entered is incorrect!");
@@ -68,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+                finish();
             }
         });
     }
